@@ -1,27 +1,29 @@
 package org.sinerj.entities.positions;
 
+import org.sinerj.entities.employee.Employee;
+
 import java.time.LocalDate;
 
 public class Sale {
 
-    private Seller seller;
+    private Employee seller;
     private Double value;
     private LocalDate date;
 
     public Sale() {
     }
 
-    public Sale(Seller seller, Double value, LocalDate date) {
+    public Sale(Employee seller, Double value, LocalDate date) {
         this.seller = seller;
         this.value = value;
         this.date = date;
     }
 
-    public Seller getSeller() {
+    public Employee getSeller() {
         return seller;
     }
 
-    public void setSeller(Seller seller) {
+    public void setSeller(Employee seller) {
         this.seller = seller;
     }
 
