@@ -13,7 +13,7 @@ public class Secretary extends Position {
     public Secretary(){
         super();
         baseSalary = 7000.00;
-        yearBenefit = 1800.00;
+        yearBenefit = 1000.00;
         percentageOfSalaryBonus = 0.2;
     }
 
@@ -26,6 +26,6 @@ public class Secretary extends Position {
 
     @Override
     public Double calculateBenefits(Employee employee, Integer year, Integer month) {
-        return baseSalary * percentageOfSalaryBonus;
+        return calculateSalary(employee, year, month) * percentageOfSalaryBonus;
     }
 }
