@@ -1,9 +1,9 @@
 package org.sinerj.entities.positions;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.sinerj.entities.employee.Employee;
+import org.sinerj.entities.sale.Sale;
 
 import java.time.LocalDate;
 

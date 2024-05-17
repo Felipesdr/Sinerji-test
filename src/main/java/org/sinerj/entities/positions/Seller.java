@@ -1,10 +1,10 @@
 package org.sinerj.entities.positions;
 
 import org.sinerj.entities.employee.Employee;
+import org.sinerj.entities.sale.Sale;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Seller extends Position {
