@@ -10,8 +10,8 @@ public abstract class Position {
     protected Double yearBenefit;
 
 
-    public abstract  Double calculateSalary(Employee employee, LocalDate localDate);
+    public abstract  Double calculateSalary(Employee employee, Integer year, Integer month);
 
-    public abstract Double calculateBenefits(Employee employee, LocalDate localDate);
+    public abstract Double calculateBenefits(Employee employee, Integer year, Integer month);
 
 }
