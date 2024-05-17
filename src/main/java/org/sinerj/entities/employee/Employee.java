@@ -65,10 +65,17 @@ public class Employee {
     }
 
     public List<Sale> getSaleList() {
-        if(position.getClass() == Seller.class) return saleList;
-        return null;
+        return saleList;
     }
     public void makeSale(Sale sale){
         if(position.getClass() == Seller.class) saleList.add(sale);
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", position=" + position +
+                '}';
     }
 }
