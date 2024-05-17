@@ -12,28 +12,45 @@ import static org.junit.jupiter.api.Assertions.*;
 class SellerTest {
     private Seller seller;
     private Employee employee1;
+    private Employee employee2;
+
+    private Sale sale1;
+    private Sale sale2;
+    private Sale sale3;
+    private Sale sale4;
+    private Sale sale5;
+
     @BeforeEach
     void setUp(){
         seller = new Seller();
-        employee1 = new Employee("Ana Silva", seller, LocalDate.of(2021, 12, 01));
-        Sale sale1 = new Sale(employee1, 42000.0, LocalDate.of(2021, 12, 03));
-        Sale sale2 = new Sale(employee1, 10000.0, LocalDate.of(2021, 12, 04));
-        Sale sale3 = new Sale(employee1, 20000.0, LocalDate.of(2022, 1, 01));
-        Sale sale4 = new Sale(employee1, 20000.0, LocalDate.of(2022, 01, 01));
+        employee1 = new Employee("Ana Silva", new Seller(), LocalDate.of(2021, 12, 01));
+        employee2 = new Employee("João Mendes", new Seller(), LocalDate.of(2021, 12, 1));
+
+        sale1 = new Sale(employee1, 5200.0, LocalDate.of(2021, 12, 3));
+        sale2 = new Sale(employee1, 4000.0, LocalDate.of(2022, 1, 1));
+        sale3 = new Sale(employee1, 4200.0, LocalDate.of(2022, 2, 1));
+        sale4 = new Sale(employee1, 5850.0, LocalDate.of(2022, 3, 1));
+        sale5 = new Sale(employee1, 7000.0, LocalDate.of(2022, 4, 1));
+
         employee1.makeSale(sale1);
         employee1.makeSale(sale2);
         employee1.makeSale(sale3);
         employee1.makeSale(sale4);
+        employee1.makeSale(sale5);
     }
     @Test
     void calculateSalary() {
-        assertEquals(12000.0, employee1.calculateSalary(2021, 12));
-        assertEquals(13800.0, employee1.calculateSalary(2022, 12));
+        assertEquals(12000.0, employee1.calculateSalary(2022, 4));
+        assertEquals(12000.0, employee2.calculateSalary(2022, 4));
+
+        assertEquals(13800.0, employee1.calculateSalary(2023, 4));
+        assertEquals(15600.0, employee2.calculateSalary(2024, 4));
     }
 
     @Test
     void calculateBenefits() {
-        assertEquals(15600.0, employee1.calculateBenefits(2021, 12));
-        assertEquals(12000.0, employee1.calculateBenefits(2022, 01));
+        assertEquals(2100.0, employee1.calculateBenefits(2022, 4));
+
+        assertEquals(1755.0, employee1.calculateBenefits(2022, 3));
     }
 }

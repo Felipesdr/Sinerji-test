@@ -13,14 +13,15 @@ class ManagerTest {
     private Employee employee2;
     @BeforeEach
     void setUp() {
-        employee1 = new Employee("Ana Silva", new Manager(), LocalDate.of(2017, 07, 01));
-        employee2 = new Employee("Ana Silva", new Manager(), LocalDate.of(2014, 03, 01));
+        employee1 = new Employee("Juliana Alves", new Manager(), LocalDate.of(2017, 7, 1));
+        employee2 = new Employee("Bento Albino", new Manager(), LocalDate.of(2014, 3, 1));
     }
 
     @Test
     void calculateSalary() {
-        assertEquals(38000, employee1.calculateSalary(2024,5));
-        assertEquals(50000, employee2.calculateSalary(2024,5));
+        assertEquals(32000, employee1.calculateSalary(2022,4));
+        assertEquals(44000, employee2.calculateSalary(2022,4));
+//        assertEquals(50000, employee2.calculateSalary(2022,4));
     }
 
     @Test
