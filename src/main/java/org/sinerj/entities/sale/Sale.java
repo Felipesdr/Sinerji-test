@@ -1,4 +1,4 @@
-package org.sinerj.entities.positions;
+package org.sinerj.entities.sale;
 
 import org.sinerj.entities.employee.Employee;
 

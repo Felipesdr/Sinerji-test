@@ -1,12 +1,10 @@
 package org.sinerj.entities.employee;
 
 import org.sinerj.entities.positions.Position;
-import org.sinerj.entities.positions.Sale;
+import org.sinerj.entities.sale.Sale;
 import org.sinerj.entities.positions.Seller;
 
 import java.time.LocalDate;
-import java.time.Month;
-import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,6 +69,6 @@ public class Employee {
         return null;
     }
     public void makeSale(Sale sale){
-        saleList.add(sale);
+        if(position.getClass() == Seller.class) saleList.add(sale);
     }
 }
