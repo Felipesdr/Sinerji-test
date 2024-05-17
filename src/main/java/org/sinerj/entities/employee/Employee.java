@@ -5,6 +5,8 @@ import org.sinerj.entities.positions.Sale;
 import org.sinerj.entities.positions.Seller;
 
 import java.time.LocalDate;
+import java.time.Month;
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,8 +26,8 @@ public class Employee {
         this.name = name;
         this.position = position;
         this.hiringDate = hiringDate;
-        this.salary = position.calculateSalary(this, LocalDate.now());
-        this.benefits = position.calculateBenefits(this, LocalDate.now());
+        this.salary = position.calculateSalary(this, LocalDate.now().getYear(), LocalDate.now().getMonthValue());
+        this.benefits = position.calculateBenefits(this, LocalDate.now().getYear(), LocalDate.now().getMonthValue());
     }
 
     public String getName() {
@@ -56,8 +58,19 @@ public class Employee {
         return salary;
     }
 
+    public Double calculateSalary(Integer year, Integer month){
+        return position.calculateSalary(this, year, month);
+    }
+
+    public Double calculateBenefits(Integer year, Integer month){
+        return position.calculateBenefits(this, year, month);
+    }
+
     public List<Sale> getSaleList() {
         if(position.getClass() == Seller.class) return saleList;
         return null;
+    }
+    public void makeSale(Sale sale){
+        saleList.add(sale);
     }
 }
