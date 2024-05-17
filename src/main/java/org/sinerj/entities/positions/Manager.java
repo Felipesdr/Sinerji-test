@@ -12,13 +12,14 @@ public class Manager extends Position{
         yearBenefit = 3000.00;
     }
     @Override
-    public Double calculateSalary(Employee employee, LocalDate date) {
+    public Double calculateSalary(Employee employee, Integer year, Integer month) {
+        LocalDate date = LocalDate.of(year, month, 01);
         Long yearsOfWork = ChronoUnit.YEARS.between(employee.getHiringDate(), date);
         return baseSalary + (yearBenefit * yearsOfWork);
     }
 
     @Override
-    public Double calculateBenefits(Employee employee, LocalDate date) {
+    public Double calculateBenefits(Employee employee, Integer year, Integer month) {
         return 0.0;
     }
 }

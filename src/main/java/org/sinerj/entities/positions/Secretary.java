@@ -4,6 +4,7 @@ import org.sinerj.entities.employee.Employee;
 import org.sinerj.entities.positions.Position;
 
 import java.time.LocalDate;
+import java.time.YearMonth;
 import java.time.temporal.ChronoUnit;
 
 public class Secretary extends Position {
@@ -17,13 +18,14 @@ public class Secretary extends Position {
     }
 
     @Override
-    public Double calculateSalary(Employee employee, LocalDate date) {
+    public Double calculateSalary(Employee employee, Integer year, Integer month) {
+        LocalDate date = LocalDate.of(year, month, 01);
         Long yearsOfWork = ChronoUnit.YEARS.between(employee.getHiringDate(), date);
         return baseSalary + (yearBenefit * yearsOfWork);
     }
 
     @Override
-    public Double calculateBenefits(Employee employee, LocalDate date) {
+    public Double calculateBenefits(Employee employee, Integer year, Integer month) {
         return baseSalary * percentageOfSalaryBonus;
     }
 }

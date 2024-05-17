@@ -18,19 +18,22 @@ public class Seller extends Position {
     }
 
     @Override
-    public Double calculateSalary(Employee employee, LocalDate date) {
+    public Double calculateSalary(Employee employee, Integer year, Integer month) {
+        LocalDate date = LocalDate.of(year, month, 01);
         Long yearsOfWork = ChronoUnit.YEARS.between(employee.getHiringDate(), date);
         return baseSalary + (yearBenefit * yearsOfWork);
     }
 
     @Override
-    public Double calculateBenefits(Employee employee, LocalDate date) {
+    public Double calculateBenefits(Employee employee, Integer year, Integer month) {
+        LocalDate date = LocalDate.of(year, month, 01);
         return calculateThisMonthTotalSales(employee.getSaleList(), date) * percentageOfTotalMonthlySales;
     }
 
     private Double calculateThisMonthTotalSales(List<Sale> sales, LocalDate date){
-        return sales.stream().filter(sale -> sale.getDate().equals(sale.getDate().getYear() == date.getYear() && sale.getDate().getMonth() == date.getMonth()))
+        Double total = sales.stream().filter(sale -> sale.getDate().getYear() == date.getYear() && sale.getDate().getMonth() == date.getMonth())
                 .mapToDouble(Sale::getValue)
                 .sum();
+        return total;
     }
 }
