@@ -67,6 +67,7 @@ public class Employee {
     public List<Sale> getSaleList() {
         return saleList;
     }
+
     public void makeSale(Sale sale){
         if(position.getClass() == Seller.class) saleList.add(sale);
     }

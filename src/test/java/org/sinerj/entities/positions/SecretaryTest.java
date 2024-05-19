@@ -27,6 +27,6 @@ class SecretaryTest {
     void calculateBenefits() {
         assertEquals(2200, employee1.calculateBenefits(2022,4));
         assertEquals(2600, employee1.calculateBenefits(2024,4));
-//        assertEquals(13000, employee2.calculateSalary(2022,4));
+//
     }
 }

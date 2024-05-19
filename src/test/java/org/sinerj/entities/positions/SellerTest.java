@@ -50,7 +50,6 @@ class SellerTest {
     @Test
     void calculateBenefits() {
         assertEquals(2100.0, employee1.calculateBenefits(2022, 4));
-
         assertEquals(1755.0, employee1.calculateBenefits(2022, 3));
     }
 }
