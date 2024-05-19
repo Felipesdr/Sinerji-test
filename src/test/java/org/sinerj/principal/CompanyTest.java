@@ -2,6 +2,7 @@ package org.sinerj.principal;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.sinerj.entities.company.Company;
 import org.sinerj.entities.employee.Employee;
 import org.sinerj.entities.positions.Manager;
 import org.sinerj.entities.positions.Secretary;
@@ -15,7 +16,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SinerjiCalculatorTest {
+class CompanyTest {
 
     private Employee employee1;
     private Employee employee2;
@@ -62,57 +63,57 @@ class SinerjiCalculatorTest {
 
     @Test
     void calculateTotalSalaryForMonth() {
-        assertEquals(124000.0, SinerjiCalculator.calculateTotalSalaryForMonth(employees, 2022, 4));
+        assertEquals(124000.0, Company.calculateTotalSalaryForMonth(employees, 2022, 4));
     }
 
     @Test
     void calculateTotalBenefitsForMonth(){
-        assertEquals(8850.0, SinerjiCalculator.calculateTotalBenefitsForMonth(employees, 2022, 4));
+        assertEquals(8850.0, Company.calculateTotalBenefitsForMonth(employees, 2022, 4));
     }
 
     @Test
     void calculateTotalPaymentForMonthToEmployeesWithBenefitsError(){
-        assertThrows(ValidationException.class, ()-> SinerjiCalculator.calculateTotalPaymentForMonthToEmployeesWithBenefits(employees, 2022, 4));
+        assertThrows(ValidationException.class, ()-> Company.calculateTotalPaymentForMonthToEmployeesWithBenefits(employees, 2022, 4));
     }
 
     @Test
     void calculateTotalPaymentForMonthToEmployeesWithBenefitsSuccess(){
         List<Employee> onlyEmployeesWithBenefits = List.of(employee1, employee2, employee3);
 
-        assertEquals(42900.0, SinerjiCalculator.calculateTotalPaymentForMonthToEmployeesWithBenefits(onlyEmployeesWithBenefits, 2022, 4));
+        assertEquals(42900.0, Company.calculateTotalPaymentForMonthToEmployeesWithBenefits(onlyEmployeesWithBenefits, 2022, 4));
     }
 
     @Test
     void findHighestPaidEmployee(){
-        assertEquals("Bento Albino", SinerjiCalculator.findHighestPaidEmployee(employees, 2022, 4).getName());
+        assertEquals("Bento Albino", Company.findHighestPaidEmployee(employees, 2022, 4).getName());
     }
 
     @Test
     void findHighestPaidEmployeeWithBenefitsError(){
-        assertThrows(ValidationException.class, ()-> SinerjiCalculator.findHighestPaidEmployeeWithBenefits(employees, 2022, 4));
+        assertThrows(ValidationException.class, ()-> Company.findHighestPaidEmployeeWithBenefits(employees, 2022, 4));
     }
 
     @Test
     void findHighestPaidEmployeeWithBenefitsSuccess(){
         List<Employee> onlyEmployeesWithBenefits = List.of(employee1, employee2, employee3);
 
-        assertEquals("Maria Souza", SinerjiCalculator.findHighestPaidEmployeeWithBenefits(onlyEmployeesWithBenefits, 2022, 4).getName());
+        assertEquals("Maria Souza", Company.findHighestPaidEmployeeWithBenefits(onlyEmployeesWithBenefits, 2022, 4).getName());
     }
 
     @Test
     void findTopSellerByMonthError(){
-        assertThrows(ValidationException.class, ()-> SinerjiCalculator.findTopSellerByMonth(employees, 2022, 4));
+        assertThrows(ValidationException.class, ()-> Company.findTopSellerByMonth(employees, 2022, 4));
     }
 
     @Test
     void findTopSellerByMonthSuccess(){
         List<Employee> sellers = List.of(employee3, employee4);
 
-        assertEquals("Ana Silva", SinerjiCalculator.findTopSellerByMonth(sellers, 2022, 4).getName());
-        assertEquals("João Mendes", SinerjiCalculator.findTopSellerByMonth(sellers, 2022, 3).getName());
-        assertEquals("João Mendes", SinerjiCalculator.findTopSellerByMonth(sellers, 2022, 2).getName());
-        assertEquals("João Mendes", SinerjiCalculator.findTopSellerByMonth(sellers, 2022, 1).getName());
-        assertEquals("Ana Silva", SinerjiCalculator.findTopSellerByMonth(sellers, 2021, 12).getName());
+        assertEquals("Ana Silva", Company.findTopSellerByMonth(sellers, 2022, 4).getName());
+        assertEquals("João Mendes", Company.findTopSellerByMonth(sellers, 2022, 3).getName());
+        assertEquals("João Mendes", Company.findTopSellerByMonth(sellers, 2022, 2).getName());
+        assertEquals("João Mendes", Company.findTopSellerByMonth(sellers, 2022, 1).getName());
+        assertEquals("Ana Silva", Company.findTopSellerByMonth(sellers, 2021, 12).getName());
     }
 
 

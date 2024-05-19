@@ -1,4 +1,4 @@
-package org.sinerj.principal;
+package org.sinerj.entities.company;
 
 import org.sinerj.entities.employee.Employee;
 import org.sinerj.entities.positions.Seller;
@@ -8,7 +8,7 @@ import org.sinerj.exceptions.ValidationException;
 import java.util.Comparator;
 import java.util.List;
 
-public class SinerjiCalculator {
+public class Company {
     public static Double calculateTotalSalaryForMonth(List<Employee> employees, Integer year, Integer month){
         return employees.stream()
                 .mapToDouble(e-> e.calculateSalary(year, month))
